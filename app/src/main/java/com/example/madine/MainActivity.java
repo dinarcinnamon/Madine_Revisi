@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.textview.MaterialTextView;
+
 public class MainActivity extends AppCompatActivity {
-    private Button btnAdmin,btnUser,aboutButton;
+    private Button btnAdmin,btnUser;
+    private MaterialTextView aboutButton;
     protected static String noUnit, name, telpNo, plat, email, password,user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
