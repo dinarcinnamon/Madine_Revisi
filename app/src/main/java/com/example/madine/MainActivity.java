@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnAdmin,btnUser;
+    private Button btnAdmin,btnUser,aboutButton;
     protected static String noUnit, name, telpNo, plat, email, password,user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnAdmin = findViewById(R.id.btn_adminLogin);
         btnUser = findViewById(R.id.btn_userLogin);
+        aboutButton = findViewById(R.id.aboutustext);
 
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, UserLogin.class);
                 startActivity(i);
+            }
+        });
+
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Mengarahkan ke halaman activity_about.xml atau AboutActivity.java
+                Intent intent = new Intent(MainActivity.this, AboutusActivity.class);
+                startActivity(intent);
             }
         });
     }

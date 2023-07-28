@@ -17,6 +17,7 @@
         app:cornerRadius="0sp"
         app:layout_constraintBottom_toBottomOf="@+id/parking_a2"
         app:layout_constraintEnd_toStartOf="@+id/parking_a2"
+        app:layout_constraintHorizontal_bias="0.323"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/parking_a2"
         app:layout_constraintVertical_bias="0.0" />

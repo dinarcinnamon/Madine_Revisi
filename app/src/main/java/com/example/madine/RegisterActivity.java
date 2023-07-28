@@ -50,20 +50,20 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Validations for input email and password
                 if (TextUtils.isEmpty(email)) {
-                    Simplify.showToastMessage(getApplicationContext(),"Silahkan isi email !!");
+                    Simplify.showToastMessage(getApplicationContext(),"Please enter E-mail!");
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    Simplify.showToastMessage(getApplicationContext(),"Silahkan isi password !!");
+                    Simplify.showToastMessage(getApplicationContext(),"Please enter Password!!");
                     return;
                 }
 
                 if(password.length()< 6){
-                    Simplify.showToastMessage(getApplicationContext(),"Password terlalu pendek");
+                    Simplify.showToastMessage(getApplicationContext(),"Password too Short");
                     return;
                 }
                 if(!password.equals(confET.getText().toString())){
-                    Simplify.showToastMessage(getApplicationContext(),"Password tidak cocok");
+                    Simplify.showToastMessage(getApplicationContext(),"Password not Match");
                     return;
                 }
 

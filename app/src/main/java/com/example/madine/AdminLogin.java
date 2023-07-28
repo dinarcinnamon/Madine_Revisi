@@ -115,12 +115,12 @@ public class AdminLogin extends AppCompatActivity {
 
         // validations for input email and password
         if (TextUtils.isEmpty(user)) {
-            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter username!!");
+            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter Username!");
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter password!!");
+            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter Password!");
             return;
         }
 
@@ -136,7 +136,7 @@ public class AdminLogin extends AppCompatActivity {
                                     @NonNull Task<AuthResult> task)
                             {
                                 if (task.isSuccessful()) {
-                                    Simplify.showToastMessageWHITE(getApplicationContext(),"Login successful!!");
+                                    Simplify.showToastMessageWHITE(getApplicationContext(),"Login Success!");
                                     // hide the progress bar
                                     progressBar.setVisibility(View.GONE);
 
@@ -149,7 +149,7 @@ public class AdminLogin extends AppCompatActivity {
                                         startActivity(intent);
 
                                     }else{
-                                        Simplify.showToastMessageWHITE(getApplicationContext(),"User Bukan Admin !");
+                                        Simplify.showToastMessageWHITE(getApplicationContext(),"You not Admin!");
 
                                         // hide the progress bar
                                         progressBar.setVisibility(View.GONE);

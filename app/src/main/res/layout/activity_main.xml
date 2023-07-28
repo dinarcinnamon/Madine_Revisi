@@ -14,6 +14,7 @@
         android:layout_marginBottom="24dp"
         android:text="Admin"
         android:textColor="@color/purple_200"
+        android:fontFamily="@font/poppins_semibold"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_userLogin"
         app:layout_constraintEnd_toEndOf="@+id/btn_userLogin"
@@ -26,9 +27,33 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="136dp"
         android:text="User"
+        android:fontFamily="@font/poppins_semibold"
         app:backgroundTint="@color/white"
         android:textColor="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/aboutustext"
+        android:text="about us."
+        android:drawableLeft="@drawable/aboutus"
+        android:layout_marginBottom="20sp"
+        android:drawablePadding="10sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

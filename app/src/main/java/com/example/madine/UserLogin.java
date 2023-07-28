@@ -124,12 +124,12 @@ public class UserLogin extends AppCompatActivity {
 
         // validations for input email and password
         if (TextUtils.isEmpty(noUnit)) {
-            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter no Unit!!");
+            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter No Unit!");
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter password!!");
+            Simplify.showToastMessageWHITE(getApplicationContext(),"Please enter Password!");
             return;
         }
 
@@ -150,7 +150,7 @@ public class UserLogin extends AppCompatActivity {
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                             .addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    Simplify.showToastMessageWHITE(getApplicationContext(),"Login successful!!");
+                                    Simplify.showToastMessageWHITE(getApplicationContext(),"Login Success!");
                                     // hide the progress bar
                                     progressBar.setVisibility(View.GONE);
 
@@ -164,7 +164,7 @@ public class UserLogin extends AppCompatActivity {
                                 } else {
                                     // sign-in failed
                                     Exception exception = task.getException();
-                                    Simplify.showToastMessageWHITE(getApplicationContext(),"Login failed!!");
+                                    Simplify.showToastMessageWHITE(getApplicationContext(),"Login Failed!");
                                     Simplify.showToastMessageWHITE(getApplicationContext(),email);
 //                                    Simplify.showToastMessageWHITE(getApplicationContext(),password);
                                     Simplify.showToastMessageWHITE(getApplicationContext(),exception.getMessage());
@@ -173,7 +173,7 @@ public class UserLogin extends AppCompatActivity {
                                 }
                             });
                 } else {
-                    Simplify.showToastMessageWHITE(getApplicationContext(),"Data tidak ditemukan");
+                    Simplify.showToastMessageWHITE(getApplicationContext(),"Data not Found");
                     progressBar.setVisibility(View.GONE);
                 }
             }

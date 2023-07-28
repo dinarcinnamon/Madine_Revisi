@@ -135,7 +135,7 @@ public class VerifikasiActivity extends AppCompatActivity {
                 dispatchPickPictureIntent();
             } else {
                 // Izin kamera ditolak, tangani sesuai kebutuhan aplikasi.
-                Toast.makeText(this, "Izin kamera ditolak.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Access Denied", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -216,7 +216,7 @@ public class VerifikasiActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 // Gagal mendapatkan URL gambar
-                                Simplify.showToastMessageWHITE(getApplicationContext(),"Failed to get image URL");
+                                Simplify.showToastMessageWHITE(getApplicationContext(),"Failed to Get Image URL");
                                 // hide the progress bar
                                 progressBar.setVisibility(View.GONE);
                             }
@@ -227,7 +227,7 @@ public class VerifikasiActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Gagal mengunggah gambar
-                        Simplify.showToastMessageWHITE(getApplicationContext(),"Failed to upload image");
+                        Simplify.showToastMessageWHITE(getApplicationContext(),"Failed to Upload Image");
                         // hide the progress bar
                         progressBar.setVisibility(View.GONE);
                     }
@@ -261,7 +261,7 @@ public class VerifikasiActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Gagal menyimpan data pengguna, tampilkan pesan kesalahan
-                        Simplify.showToastMessageWHITE(getApplicationContext(),"Failed to register");
+                        Simplify.showToastMessageWHITE(getApplicationContext(),"Failed to Register");
                     }
                 });
     }
@@ -283,7 +283,7 @@ public class VerifikasiActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            Simplify.showToastMessageWHITE(getApplicationContext(),"Registrasi Berhasil");
+                            Simplify.showToastMessageWHITE(getApplicationContext(),"Registration Success!");
                             // hide the progress bar
                             progressBar.setVisibility(View.GONE);
 
@@ -291,7 +291,7 @@ public class VerifikasiActivity extends AppCompatActivity {
                         else {
 
                             // Registration failed
-                            Simplify.showToastMessageWHITE(getApplicationContext(),"Registrasi Gagal!!" + " Silahkan Coba lagi");
+                            Simplify.showToastMessageWHITE(getApplicationContext(),"Registration Failed!" + "Please Try Again");
                             // hide the progress bar
                             progressBar.setVisibility(View.GONE);
                         }
