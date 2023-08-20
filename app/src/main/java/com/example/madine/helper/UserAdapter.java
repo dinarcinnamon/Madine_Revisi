@@ -1,9 +1,14 @@
 package com.example.madine.helper;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,14 +17,24 @@ import com.example.madine.R;
 import com.example.madine.User;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class UserAdapter extends FirebaseRecyclerAdapter<User,UserAdapter.UserViewholder> {
+    private Activity activity;
 
+    private DatabaseReference mbase;
     private String noUnit, name, telpNo, license;
+
     public UserAdapter(
             @NonNull FirebaseRecyclerOptions<User> options)
     {
         super(options);
+        this.activity = activity;
+        this.mbase = FirebaseDatabase.getInstance().getReference("user");
     }
 
     @Override
@@ -37,6 +52,34 @@ public class UserAdapter extends FirebaseRecyclerAdapter<User,UserAdapter.UserVi
         holder.nametv.setText(name);
         holder.telpNotv.setText(telpNo);
         holder.licensetv.setText(license);
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mbase.child("user").child(noUnit).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(activity,"success", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(activity, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).setMessage("Are you sure want delete" + noUnit + "?");
+                builder.show();
+            }
+        });
 
 
     }
@@ -58,17 +101,19 @@ public class UserAdapter extends FirebaseRecyclerAdapter<User,UserAdapter.UserVi
 
     // Sub Class to create references of the views in Crad
     // view (here "User.xml")
-    class UserViewholder
+    static class UserViewholder
             extends RecyclerView.ViewHolder {
         TextView noUnittv, nametv,telpNotv,licensetv;
+        ImageView delete;
         public UserViewholder(@NonNull View itemView)
         {
             super(itemView);
 
             noUnittv = itemView.findViewById(R.id.info_noUnit_tv);
-            telpNotv = itemView.findViewById(R.id.info_telpno_tv);
+            telpNotv = itemView.findViewById(R.id.info_telpNo_tv);
             nametv = itemView.findViewById(R.id.info_name_tv);
             licensetv = itemView.findViewById(R.id.info_license_tv);
+            delete = itemView.findViewById(R.id.delete);
         }
     }
 

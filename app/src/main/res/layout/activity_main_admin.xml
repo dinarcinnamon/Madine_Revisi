@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_page_admin__1_"
+    android:background="@drawable/login_page_admin_2"
     tools:context=".MainAdmin">
 
     <Button
@@ -15,7 +15,7 @@
         android:text="Register"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/purple_200"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_info_penghuni"
         app:layout_constraintEnd_toEndOf="@+id/btn_info_penghuni"
@@ -27,10 +27,10 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="228dp"
-        android:text="Info Penghuni"
+        android:text="User Information"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/purple_200"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
