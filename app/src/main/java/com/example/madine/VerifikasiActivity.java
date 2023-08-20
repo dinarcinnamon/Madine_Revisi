@@ -9,12 +9,14 @@ import static com.example.madine.MainActivity.telpNo;
 import static com.example.madine.MainActivity.user;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -41,6 +43,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+// baru ditambahin
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -79,6 +85,31 @@ public class VerifikasiActivity extends AppCompatActivity {
         //firebase init
         mAuth = FirebaseAuth.getInstance();
         imgRef = FirebaseDatabase.getInstance().getReference("img").child(noUnit).child("imageUrl");
+
+        // Tambahkan listener untuk jumlah pengguna di Realtime Database
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("user");
+        usersRef.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                long userCount = dataSnapshot.getChildrenCount();
+
+                if (userCount > 10) {
+                    // Jika jumlah pengguna melebihi 10, tampilkan peringatan di sini
+                    showUserLimitAlert();
+                }
+            }
+
+            private void showUserLimitAlert() {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error jika ada
+            }
+        });
+
         /// Atur onClickListener untuk tombol Capture
         captureButton.setOnClickListener(new View.OnClickListener() {
             @Override
